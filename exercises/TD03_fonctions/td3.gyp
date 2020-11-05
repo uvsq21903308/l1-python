@@ -273,7 +273,6 @@ def proportionTemps(temps,proportion):
 
 def tempsEnDate(temps):
     ans = temps[0] // 365
-    mois = "arthur"
     if ans == 1:
         jour = temps[0]
         if jour < 32 :
@@ -306,26 +305,37 @@ def tempsEnDate(temps):
             mois = "Janvier"
         elif 31 < jour < 60:
             mois = "Février"
+            jour -= 31
         elif 59 < jour < 91:
             mois = "Mars"
+            jour -= 59
         elif 90 < jour < 121:
             mois = "Avril"
+            jour -= 90
         elif 120 < jour < 152:
             mois = "Mai"
+            jour -= 120
         elif 151 < jour < 182:
             mois = "Juin"
+            jour -= 151
         elif 181 < jour < 213:
             mois = "Juillet"
+            jour -= 181
         elif 212 < jour < 244:
             mois = "Août"
+            jour -= 212
         elif 243 < jour < 274:
             mois = "Septembre"
+            jour -= 243
         elif 273 < jour < 305:
             mois = "Octobre"
+            jour -= 273
         elif 304 < jour < 335:
             mois = "Novembre"
+            jour -= 304
         elif 334 < jour < 366:
             mois = "Décembre"
+            jour -= 334
     ans =  1970 + temps[0] % 365
     heure = temps[1]
     minute = temps[2]
