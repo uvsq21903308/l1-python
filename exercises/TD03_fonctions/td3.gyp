@@ -267,4 +267,77 @@ def proportionTemps(temps,proportion):
     x = secondeEnTemps(x)
     return x
 
-afficheTemps(proportionTemps(proportion = 0.2, temps = (2,4,36,0)))
+#afficheTemps(proportionTemps(proportion = 0.2, temps = (2,4,36,0)))
+
+#Calendrier
+
+def tempsEnDate(temps):
+    ans = temps[0] // 365
+    mois = "arthur"
+    if ans == 1:
+        jour = temps[0]
+        if jour < 32 :
+            mois = "Janvier"
+        elif 31 < jour < 60:
+            mois = "Février"
+        elif 59 < jour < 91:
+            mois = "Mars"
+        elif 90 < jour < 121:
+            mois = "Avril"
+        elif 120 < jour < 152:
+            mois = "Mai"
+        elif 151 < jour < 182:
+            mois = "Juin"
+        elif 181 < jour < 213:
+            mois = "Juillet"
+        elif 212 < jour < 244:
+            mois = "Août"
+        elif 243 < jour < 274:
+            mois = "Septembre"
+        elif 273 < jour < 305:
+            mois = "Octobre"
+        elif 304 < jour < 335:
+            mois = "Novembre"
+        elif 334 < jour < 366:
+            mois = "Décembre"
+    else:
+        jour = temps[0] - ans * 365
+        if jour < 32 :
+            mois = "Janvier"
+        elif 31 < jour < 60:
+            mois = "Février"
+        elif 59 < jour < 91:
+            mois = "Mars"
+        elif 90 < jour < 121:
+            mois = "Avril"
+        elif 120 < jour < 152:
+            mois = "Mai"
+        elif 151 < jour < 182:
+            mois = "Juin"
+        elif 181 < jour < 213:
+            mois = "Juillet"
+        elif 212 < jour < 244:
+            mois = "Août"
+        elif 243 < jour < 274:
+            mois = "Septembre"
+        elif 273 < jour < 305:
+            mois = "Octobre"
+        elif 304 < jour < 335:
+            mois = "Novembre"
+        elif 334 < jour < 366:
+            mois = "Décembre"
+    ans =  1970 + temps[0] % 365
+    heure = temps[1]
+    minute = temps[2]
+    secont = temps[3]
+    print(jour, mois, ans, "à", heure, ":", minute, ":", secont)
+
+
+def afficheDate(date = -1):
+    pass
+    
+temps = secondeEnTemps(1000000000)
+afficheTemps(temps)
+tempsEnDate(temps)
+#afficheDate(tempsEnDate(temps))
+#afficheDate()
