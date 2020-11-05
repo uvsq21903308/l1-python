@@ -276,78 +276,127 @@ def tempsEnDate(temps):
     if ans == 1:
         jour = temps[0]
         if jour < 32 :
-            mois = "Janvier"
+            mois = 1
         elif 31 < jour < 60:
-            mois = "Février"
+            mois = 2
+            jour -= 31
         elif 59 < jour < 91:
-            mois = "Mars"
+            mois = 3
+            jour -= 59
         elif 90 < jour < 121:
-            mois = "Avril"
+            mois = 4
+            jour -= 90
         elif 120 < jour < 152:
-            mois = "Mai"
+            mois = 5
+            jour -= 120
         elif 151 < jour < 182:
-            mois = "Juin"
+            mois = 6
+            jour -= 151
         elif 181 < jour < 213:
-            mois = "Juillet"
+            mois = 7
+            jour -= 181
         elif 212 < jour < 244:
-            mois = "Août"
+            mois = 8
+            jour -= 212
         elif 243 < jour < 274:
-            mois = "Septembre"
+            mois = 9
+            jour -= 243
         elif 273 < jour < 305:
-            mois = "Octobre"
+            mois = 10
+            jour -= 273
         elif 304 < jour < 335:
-            mois = "Novembre"
+            mois = 11
+            jour -= 304
         elif 334 < jour < 366:
-            mois = "Décembre"
+            mois = 12
+            jour -= 334
     else:
         jour = temps[0] - ans * 365
         if jour < 32 :
-            mois = "Janvier"
+            mois = 1
         elif 31 < jour < 60:
-            mois = "Février"
+            mois = 2
             jour -= 31
         elif 59 < jour < 91:
-            mois = "Mars"
+            mois = 3
             jour -= 59
         elif 90 < jour < 121:
-            mois = "Avril"
+            mois = 4
             jour -= 90
         elif 120 < jour < 152:
-            mois = "Mai"
+            mois = 5
             jour -= 120
         elif 151 < jour < 182:
-            mois = "Juin"
+            mois = 6
             jour -= 151
         elif 181 < jour < 213:
-            mois = "Juillet"
+            mois = 7
             jour -= 181
         elif 212 < jour < 244:
-            mois = "Août"
+            mois = 8
             jour -= 212
         elif 243 < jour < 274:
-            mois = "Septembre"
+            mois = 9
             jour -= 243
         elif 273 < jour < 305:
-            mois = "Octobre"
+            mois = 10
             jour -= 273
         elif 304 < jour < 335:
-            mois = "Novembre"
+            mois = 11
             jour -= 304
         elif 334 < jour < 366:
-            mois = "Décembre"
+            mois = 12
             jour -= 334
-    ans =  1970 + temps[0] % 365
-    heure = temps[1]
-    minute = temps[2]
-    secont = temps[3]
-    print(jour, mois, ans, "à", heure, ":", minute, ":", secont)
+    ans =  1970 + temps[0] // 365
+    temps.insert(0, ans)
+    temps.insert(1, mois)
+    temps.pop(2)
+    temps.insert(2,jour)
+    return temps
 
 
 def afficheDate(date = -1):
-    pass
+    #Jours
+    print(temps[2], end=" ")
+    #Mois
+    if temps[1] == 1:
+        print("Janvier", end=" ")
+    elif temps[1] == 2:
+        print("Février", end=" ")
+    elif temps[1] == 3:
+        print("Mars", end=" ")
+    elif temps[1] == 4:
+        print("Avril", end=" ")
+    elif temps[1] == 5:
+        print("Mai", end=" ")
+    elif temps[1] == 6:
+        print("Juin", end=" ")
+    elif temps[1] == 7:
+        print("Juillet", end=" ")
+    elif temps[1] == 8:
+        print("Août", end=" ")
+    elif temps[1] == 9:
+        print("Septembre", end=" ")
+    elif temps[1] == 10:
+        print("Octobre", end=" ")
+    elif temps[1] == 11:
+        print("Novembre", end=" ")
+    elif temps[1] == 12:
+        print("Décembre", end=" ")
+    #Année
+    print(temps[0], "à", end=" ")
+    #Heures
+    print(temps[3], end=":")
+    #Minutes
+    print(temps[4], end=":")
+    #Secondes
+    print(temps[5])
+    return 
+    
     
 temps = secondeEnTemps(1000000000)
 afficheTemps(temps)
 tempsEnDate(temps)
+afficheDate(temps)
 #afficheDate(tempsEnDate(temps))
 #afficheDate()
