@@ -423,7 +423,20 @@ def afficheDate(date=-1):
     return
 
 
-temps = secondeEnTemps(1000000000)
-afficheTemps(temps)
-afficheDate(tempsEnDate(temps))
-afficheDate()
+# temps = secondeEnTemps(1000000000)
+# afficheTemps(temps)
+# afficheDate(tempsEnDate(temps))
+# afficheDate()
+
+
+def bisextile(jour):
+    fixe = jour // 365
+    ans = 2020
+    for i in range(fixe+1):
+        ans += 1
+        if (ans % 4 == 0 and not ans % 100 == 0) or ans % 400 == 0:
+            print(ans)
+
+ 
+# bisextile(20000)
+
