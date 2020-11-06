@@ -35,7 +35,7 @@ def secondeEnTemps(seconde):
 
 def afficheTemps(temps):
     """Renvoie un affichage du nombre de jours, heure, minutes et seconde\
-         avec la bonne syntaxe"""
+        avec la bonne syntaxe"""
     # Jours
     if temps[0] > 1:
         print(temps[0], "jours", end=" ")
@@ -385,41 +385,48 @@ def tempsEnDate(temps):
 
 
 def afficheDate(date=-1):
-    # Jours
-    print(temps[2], end=" ")
-    # Mois
-    if temps[1] == 1:
-        print("Janvier", end=" ")
-    elif temps[1] == 2:
-        print("Février", end=" ")
-    elif temps[1] == 3:
-        print("Mars", end=" ")
-    elif temps[1] == 4:
-        print("Avril", end=" ")
-    elif temps[1] == 5:
-        print("Mai", end=" ")
-    elif temps[1] == 6:
-        print("Juin", end=" ")
-    elif temps[1] == 7:
-        print("Juillet", end=" ")
-    elif temps[1] == 8:
-        print("Août", end=" ")
-    elif temps[1] == 9:
-        print("Septembre", end=" ")
-    elif temps[1] == 10:
-        print("Octobre", end=" ")
-    elif temps[1] == 11:
-        print("Novembre", end=" ")
-    elif temps[1] == 12:
-        print("Décembre", end=" ")
-    # Année
-    print(temps[0], "à", end=" ")
-    # Heures
-    print(temps[3], end=":")
-    # Minutes
-    print(temps[4], end=":")
-    # Secondes
-    print(temps[5])
+    import time
+    if len(temps) == 0:
+        y = time.time()
+        # x = time.gmtime()
+        x =time.strftime("%d %B %Y %H:%M:%S", time.gmtime())
+        print(x)
+    else:
+        # Jours
+        print(temps[2], end=" ")
+        # Mois
+        if temps[1] == 1:
+            print("Janvier", end=" ")
+        elif temps[1] == 2:
+            print("Février", end=" ")
+        elif temps[1] == 3:
+            print("Mars", end=" ")
+        elif temps[1] == 4:
+            print("Avril", end=" ")
+        elif temps[1] == 5:
+            print("Mai", end=" ")
+        elif temps[1] == 6:
+            print("Juin", end=" ")
+        elif temps[1] == 7:
+            print("Juillet", end=" ")
+        elif temps[1] == 8:
+            print("Août", end=" ")
+        elif temps[1] == 9:
+            print("Septembre", end=" ")
+        elif temps[1] == 10:
+            print("Octobre", end=" ")
+        elif temps[1] == 11:
+            print("Novembre", end=" ")
+        elif temps[1] == 12:
+            print("Décembre", end=" ")
+        # Année
+        print(temps[0], "à", end=" ")
+        # Heures
+        print(temps[3], end=":")
+        # Minutes
+        print(temps[4], end=":")
+        # Secondes
+        print(temps[5])
     return
 
 
@@ -429,7 +436,7 @@ def afficheDate(date=-1):
 # afficheDate()
 
 
-def bisextile(jour):
+def bissextile(jour):
     fixe = jour // 365
     ans = 2020
     for i in range(fixe+1):
@@ -437,6 +444,183 @@ def bisextile(jour):
         if (ans % 4 == 0 and not ans % 100 == 0) or ans % 400 == 0:
             print(ans)
 
- 
-# bisextile(20000)
 
+# bissextile(20000)
+
+
+def nombreBissextile(jour):
+    fixe = jour // 365
+    ans = 1970
+    nbr_biss = 0
+    for i in range(fixe+1):
+        ans += 1
+        if (ans % 4 == 0 and not ans % 100 == 0) or ans % 400 == 0:
+            nbr_biss += 1
+    return nbr_biss
+
+
+def tempsEnDateBissextile(temps):
+    nbr_biss = nombreBissextile(temps[0])
+    ans = (temps[0] - nbr_biss * 366) // 365 + nbr_biss
+    biss = 1970 + (temps[0] - nbr_biss * 366) // 365 + nbr_biss
+    if (biss % 4 == 0 and not biss % 100 == 0) or biss % 400 == 0:
+        if ans == 1:
+            jour = temps[0]
+            if jour < 32:
+                mois = 1
+            elif 31 < jour < 61:
+                mois = 2
+                jour -= 31
+            elif 59 < jour < 92:
+                mois = 3
+                jour -= 60
+            elif 90 < jour < 122:
+                mois = 4
+                jour -= 91
+            elif 120 < jour < 153:
+                mois = 5
+                jour -= 121
+            elif 151 < jour < 183:
+                mois = 6
+                jour -= 152
+            elif 181 < jour < 214:
+                mois = 7
+                jour -= 182
+            elif 212 < jour < 245:
+                mois = 8
+                jour -= 213
+            elif 243 < jour < 275:
+                mois = 9
+                jour -= 244
+            elif 273 < jour < 306:
+                mois = 10
+                jour -= 274
+            elif 304 < jour < 336:
+                mois = 11
+                jour -= 305
+            elif 334 < jour < 367:
+                mois = 12
+                jour -= 335
+        else:
+            jour = temps[0] - ((ans - nbr_biss) * 365 + nbr_biss * 366)
+            if jour < 32:
+                mois = 1
+            elif 31 < jour < 61:
+                mois = 2
+                jour -= 31
+            elif 59 < jour < 92:
+                mois = 3
+                jour -= 60
+            elif 90 < jour < 122:
+                mois = 4
+                jour -= 91
+            elif 120 < jour < 153:
+                mois = 5
+                jour -= 121
+            elif 151 < jour < 183:
+                mois = 6
+                jour -= 152
+            elif 181 < jour < 214:
+                mois = 7
+                jour -= 182
+            elif 212 < jour < 245:
+                mois = 8
+                jour -= 213
+            elif 243 < jour < 275:
+                mois = 9
+                jour -= 244
+            elif 273 < jour < 306:
+                mois = 10
+                jour -= 274
+            elif 304 < jour < 336:
+                mois = 11
+                jour -= 305
+            elif 334 < jour < 367:
+                mois = 12
+                jour -= 335
+    else:
+        if ans == 1:
+            jour = temps[0]
+            if jour < 32:
+                mois = 1
+            elif 31 < jour < 60:
+                mois = 2
+                jour -= 31
+            elif 59 < jour < 91:
+                mois = 3
+                jour -= 59
+            elif 90 < jour < 121:
+                mois = 4
+                jour -= 90
+            elif 120 < jour < 152:
+                mois = 5
+                jour -= 120
+            elif 151 < jour < 182:
+                mois = 6
+                jour -= 151
+            elif 181 < jour < 213:
+                mois = 7
+                jour -= 181
+            elif 212 < jour < 244:
+                mois = 8
+                jour -= 212
+            elif 243 < jour < 274:
+                mois = 9
+                jour -= 243
+            elif 273 < jour < 305:
+                mois = 10
+                jour -= 273
+            elif 304 < jour < 335:
+                mois = 11
+                jour -= 304
+            elif 334 < jour < 366:
+                mois = 12
+                jour -= 334
+        else:
+            jour = temps[0] - ((ans - nbr_biss) * 365 + nbr_biss * 366)
+            if jour < 32:
+                mois = 1
+            elif 31 < jour < 60:
+                mois = 2
+                jour -= 31
+            elif 59 < jour < 91:
+                mois = 3
+                jour -= 59
+            elif 90 < jour < 121:
+                mois = 4
+                jour -= 90
+            elif 120 < jour < 152:
+                mois = 5
+                jour -= 120
+            elif 151 < jour < 182:
+                mois = 6
+                jour -= 151
+            elif 181 < jour < 213:
+                mois = 7
+                jour -= 181
+            elif 212 < jour < 244:
+                mois = 8
+                jour -= 212
+            elif 243 < jour < 274:
+                mois = 9
+                jour -= 243
+            elif 273 < jour < 305:
+                mois = 10
+                jour -= 273
+            elif 304 < jour < 335:
+                mois = 11
+                jour -= 304
+            elif 334 < jour < 366:
+                mois = 12
+                jour -= 334
+    ans = 1970 + (temps[0] - nbr_biss * 366) // 365 + nbr_biss
+    temps.insert(0, ans)
+    temps.insert(1, mois)
+    temps.pop(2)
+    temps.insert(2, jour)
+    return temps
+
+
+# temps = secondeEnTemps(1000000000)
+# afficheTemps(temps)
+# afficheDate(tempsEnDateBissextile(temps))
