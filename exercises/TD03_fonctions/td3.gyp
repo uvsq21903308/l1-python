@@ -437,6 +437,7 @@ def afficheDate(date=-1):
 
 
 def bissextile(jour):
+    """Renvoie les années qui sont bissextiles par rapport à un nombre de jour depuis l'année 2020."""
     fixe = jour // 365
     ans = 2020
     for i in range(fixe+1):
@@ -449,6 +450,7 @@ def bissextile(jour):
 
 
 def nombreBissextile(jour):
+    """Compte le nombre d'année bissextile depuis 1970 par rapport à un nombre de jour donné."""
     fixe = jour // 365
     ans = 1970
     nbr_biss = 0
@@ -460,6 +462,7 @@ def nombreBissextile(jour):
 
 
 def tempsEnDateBissextile(temps):
+    """Renvoie une date en fontion d'un temps en prenant en compte les années bissextiles"""
     nbr_biss = nombreBissextile(temps[0])
     ans = (temps[0] - nbr_biss * 366) // 365 + nbr_biss
     biss = 1970 + (temps[0] - nbr_biss * 366) // 365 + nbr_biss
@@ -624,3 +627,28 @@ def tempsEnDateBissextile(temps):
 # temps = secondeEnTemps(1000000000)
 # afficheTemps(temps)
 # afficheDate(tempsEnDateBissextile(temps))
+
+# Verification de temps de travail.
+
+
+def verifie(liste_temps):
+    """Permet de vérifier le temps de travail par rapport à une semaine et à un mois"""
+    y = 0
+    z = 0
+    for i in range(len(liste_temps)):
+        x = tempsEnSeconde(liste_temps[i])
+        y += x
+        z += 1
+        if x > 172800:
+            print("La semaine", z, "dépasse la limite d'heure acceptable pour un employer.")
+        else:
+            print("La semaine", z, "ne dépasse pas la limite d'heure acceptable pour un employer.")
+    if y > 504000:
+        print("Le mois dépasse la limite d'heure acceptable pour un employer.")
+    else:
+        print("Le mois ne dépasse pas la limite d'heure acceptable pour un employer.")
+
+
+
+liste_temps = [[1,2,39,34],[0,1,9,4],[0,29,39,51],[0,31,13,46]]
+verifie(liste_temps)
