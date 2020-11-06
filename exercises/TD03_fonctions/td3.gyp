@@ -425,7 +425,5 @@ def afficheDate(date=-1):
 
 temps = secondeEnTemps(1000000000)
 afficheTemps(temps)
-tempsEnDate(temps)
-afficheDate(temps)
-# afficheDate(tempsEnDate(temps))
-# afficheDate()
+afficheDate(tempsEnDate(temps))
+afficheDate()
