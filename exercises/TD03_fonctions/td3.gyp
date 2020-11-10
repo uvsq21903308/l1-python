@@ -301,6 +301,7 @@ def proportionTemps(temps, proportion):
 
 
 def tempsEnDate(temps):
+    date = []
     ans = temps[0] // 365
     if ans == 1:
         jour = temps[0]
@@ -377,63 +378,66 @@ def tempsEnDate(temps):
             mois = 12
             jour -= 334
     ans = 1970 + temps[0] // 365
-    temps.insert(0, ans)
-    temps.insert(1, mois)
-    temps.pop(2)
-    temps.insert(2, jour)
-    return temps
+    heure = temps[1]
+    minutes = temps[2]
+    seconde = temps [3]
+    date.append(ans)
+    date.append(mois)
+    date.append(jour)
+    date.append(heure)
+    date.append(minutes)
+    date.append(seconde)
+    return date
 
 
 def afficheDate(date=-1):
     import time
-    if len(temps) == 0:
-        y = time.time()
-        # x = time.gmtime()
+    if date == -1:
         x =time.strftime("%d %B %Y %H:%M:%S", time.gmtime())
         print(x)
     else:
         # Jours
-        print(temps[2], end=" ")
+        print(date[2], end=" ")
         # Mois
-        if temps[1] == 1:
+        if date[1] == 1:
             print("Janvier", end=" ")
-        elif temps[1] == 2:
+        elif date[1] == 2:
             print("Février", end=" ")
-        elif temps[1] == 3:
+        elif date[1] == 3:
             print("Mars", end=" ")
-        elif temps[1] == 4:
+        elif date[1] == 4:
             print("Avril", end=" ")
-        elif temps[1] == 5:
+        elif date[1] == 5:
             print("Mai", end=" ")
-        elif temps[1] == 6:
+        elif date[1] == 6:
             print("Juin", end=" ")
-        elif temps[1] == 7:
+        elif date[1] == 7:
             print("Juillet", end=" ")
-        elif temps[1] == 8:
+        elif date[1] == 8:
             print("Août", end=" ")
-        elif temps[1] == 9:
+        elif date[1] == 9:
             print("Septembre", end=" ")
-        elif temps[1] == 10:
+        elif date[1] == 10:
             print("Octobre", end=" ")
-        elif temps[1] == 11:
+        elif date[1] == 11:
             print("Novembre", end=" ")
-        elif temps[1] == 12:
+        elif date[1] == 12:
             print("Décembre", end=" ")
         # Année
-        print(temps[0], "à", end=" ")
+        print(date[0], "à", end=" ")
         # Heures
-        print(temps[3], end=":")
+        print(date[3], end=":")
         # Minutes
-        print(temps[4], end=":")
+        print(date[4], end=":")
         # Secondes
-        print(temps[5])
+        print(date[5])
     return
 
 
-# temps = secondeEnTemps(1000000000)
-# afficheTemps(temps)
-# afficheDate(tempsEnDate(temps))
-# afficheDate()
+temps = secondeEnTemps(1000000000)
+afficheTemps(temps)
+afficheDate(tempsEnDate(temps))
+afficheDate()
 
 
 def bissextile(jour):
@@ -632,7 +636,7 @@ def tempsEnDateBissextile(temps):
 
 
 def verifie(liste_temps):
-    """Permet de vérifier le temps de travail par rapport à une semaine et à un mois"""
+    """Permet de vérifier le temps de travail par rapport aux semaines et aux mois"""
     y = 0
     z = 0
     for i in range(len(liste_temps)):
@@ -649,6 +653,5 @@ def verifie(liste_temps):
         print("Le mois ne dépasse pas la limite d'heure acceptable pour un employer.")
 
 
-
-liste_temps = [[1,2,39,34],[0,1,9,4],[0,29,39,51],[0,31,13,46]]
-verifie(liste_temps)
+# liste_temps = [[1,2,39,34],[0,1,9,4],[0,29,39,51],[0,31,13,46]]
+# verifie(liste_temps)
