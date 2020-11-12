@@ -290,6 +290,9 @@ def sommeTemps(temps1, temps2):
 # sommeTemps((2,3,4,25),(5,22,57,1))
 
 def proportionTemps(temps, proportion):
+    if type(temps) == float:
+        temps, proportion = proportion, temps
+    
     temps = tempsEnSeconde(temps)
     x = temps * proportion
     x = secondeEnTemps(x)
