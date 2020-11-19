@@ -14,15 +14,13 @@ def syracuse(n):
 
 def testeConjecture(n_max):
     """ Teste la conjecture de Collatz pour toutes les valeurs de 2 à n_max """
-    for i in range(2,n_max + 1):
-        list_test = syracuse
-        while list_test[-1] == 1:
-            syracuse(i)
-            list_test = syracuse
-    x = True
-    return x 
-    
-    
-
+    for i in range(3, n_max + 1):
+        liste_syracuse = syracuse(i)
+        if liste_syracuse[-1] == 1:
+            x = True
+        else:
+            x = False
+    return x
+        
 
 print(testeConjecture(10000))
