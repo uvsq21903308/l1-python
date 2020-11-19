@@ -23,4 +23,47 @@ def testeConjecture(n_max):
     return x
         
 
-print(testeConjecture(10000))
+# print(testeConjecture(10000))
+
+
+def tempsVol(n):
+    """ Retourne le temps de vol de n """
+    liste_syracuse = syracuse(n)
+    y = len(liste_syracuse)
+    return y
+
+
+# print("Le temps de vol de", 3, "est", tempsVol(3))
+
+def tempsVolListe(n_max):
+    """ Retourne la liste de tous les temps de vol de 1 à n_max """
+    t_vol = []
+    for i in range(1, n_max + 1):
+        t_vol.append(tempsVol(i))
+    return t_vol
+
+
+
+# print(tempsVolListe(100))
+
+
+def tempsVolMax(n_max):
+    """ Retourne le temps maximum parmis tout les temps de 1 à n_max """
+    t_max = tempsVolListe(n_max)
+    t_max.sort()
+    z = t_max[-1]
+    y = 0
+    x = 0
+    while z < y:
+        for i in range(1, n_max + 1):
+            liste = tempsVol(i)
+            liste_sort()
+            y = liste[-1]
+            x += 1
+    return y
+
+
+print(tempsVolMax(10000))
+
+
+
