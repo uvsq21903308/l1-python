@@ -46,7 +46,6 @@ def tempsVolListe(n_max):
 
 # print(tempsVolListe(100))
 
-
 def tempsVolMax(n_max):
     """ Retourne le temps maximum parmis tout les temps de 1 à n_max """
     t_max = tempsVolListe(n_max)
@@ -54,16 +53,13 @@ def tempsVolMax(n_max):
     z = t_max[-1]
     y = 0
     x = 0
-    while z < y:
-        for i in range(1, n_max + 1):
-            liste = tempsVol(i)
-            liste_sort()
+    for i in range(1, n_max + 1):
+        while z < y:
+            liste = tempsVolListe(i)
+            liste.sort()
             y = liste[-1]
             x += 1
-    return y
+    return x
 
 
 print(tempsVolMax(10000))
-
-
-
