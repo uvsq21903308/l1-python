@@ -50,6 +50,7 @@ def tempsVolMax(n_max):
     """ Retourne le temps maximum parmis tout les temps de 1 à n_max """
     t_max = tempsVolListe(n_max)
     t_max.sort()
+    # x = max(t_max)
     z = t_max[-1]
     y = 0
     x = 0
@@ -62,19 +63,15 @@ def tempsVolMax(n_max):
     return x
 
 
-# print(tempsVolMax(10000))
+print(tempsVolMax(10000))
 
 
 def altitudeMax(n):
     """ Retounre l'altitude maximal parmis tout les trajets ayant 1 à n étapes """
-    for i in range(2, n):
-        x = syracuse(i)
-        x.sort()
-        o = x[-1]
-        z = 0
-        if o > z:
-            z = o
+    l_alt = tempsVolListe(n)
+    alt_max = max(l_alt)
+    z = l_alt.index()
     return z
 
 
-print(altitudeMax(10000))
+# print(altitudeMax(10000))
