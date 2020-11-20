@@ -7,7 +7,7 @@ def syracuse(n):
         else:
             n = n * 3 + 1
         liste_syracuse.append(n)
-    return liste_syracuse        
+    return liste_syracuse
 
 
 # print(syracuse(3))
@@ -21,7 +21,7 @@ def testeConjecture(n_max):
         else:
             x = False
     return x
-        
+
 
 # print(testeConjecture(10000))
 
@@ -33,6 +33,7 @@ def tempsVol(n):
     return y
 
 # print("Le temps de vol de", 3, "est", tempsVol(3))
+
 
 def tempsVolListe(n_max):
     """ Retourne la liste de tous les temps de vol de 1 à n_max """
@@ -65,7 +66,8 @@ def tempsVolMax(n_max):
 
 
 def altitudeMax(n):
-    """ Retounre l'altitude maximal parmis tout les trajets ayant 1 à n étapes """
+    """ Retounre l'altitude maximal parmis tout les trajets ayant \
+        1 à n étapes """
     l_alt = []
     for i in range(1, n + 1):
         alt = i
@@ -82,4 +84,4 @@ def altitudeMax(n):
     return z
 
 
-# print(altitudeMax(10000))
+print(altitudeMax(10000))
