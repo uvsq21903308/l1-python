@@ -17,7 +17,7 @@ def afficheCarre(carre):
             if len(str(carre[i][j])) == tot_spc:
                 print(carre[i][j], end=" ")
             else:
-                print(space * (len(str(carre[i][j])) - tot_spc) + str(carre[i][j]), end=" ")
+                print(space * int((len(str(carre[i][j])) - tot_spc)) + str(carre[i][j]), end=" "))
         print()
     return
     
