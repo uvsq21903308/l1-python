@@ -54,12 +54,27 @@ def tempsVolMax(n_max):
     y = 0
     x = 0
     for i in range(1, n_max + 1):
-        while z < y:
-            liste = tempsVolListe(i)
-            liste.sort()
-            y = liste[-1]
+        if z > y:
+            y = tempsVol(i)
             x += 1
+        else:
+            break
     return x
 
 
-print(tempsVolMax(10000))
+# print(tempsVolMax(10000))
+
+
+def altitudeMax(n):
+    """ Retounre l'altitude maximal parmis tout les trajets ayant 1 à n étapes """
+    for i in range(2, n):
+        x = syracuse(i)
+        x.sort()
+        o = x[-1]
+        z = 0
+        if o > z:
+            z = o
+    return z
+
+
+print(altitudeMax(10000))
