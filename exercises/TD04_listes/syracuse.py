@@ -32,7 +32,6 @@ def tempsVol(n):
     y = len(liste_syracuse)
     return y
 
-
 # print("Le temps de vol de", 3, "est", tempsVol(3))
 
 def tempsVolListe(n_max):
@@ -41,7 +40,6 @@ def tempsVolListe(n_max):
     for i in range(1, n_max + 1):
         t_vol.append(tempsVol(i))
     return t_vol
-
 
 
 # print(tempsVolListe(100))
@@ -63,15 +61,19 @@ def tempsVolMax(n_max):
     return x
 
 
-print(tempsVolMax(10000))
+# print(tempsVolMax(10000))
 
 
 def altitudeMax(n):
     """ Retounre l'altitude maximal parmis tout les trajets ayant 1 à n étapes """
-    l_alt = tempsVolListe(n)
+    l_alt =[]
+    for i in range(1, n + 1):
+        l_alt.append(syracuse(i))
     alt_max = max(l_alt)
-    z = l_alt.index()
-    return z
+    z = l_alt.index(alt_max) + 1
+    return l_alt, z
 
 
-# print(altitudeMax(10000))
+print(altitudeMax(10000))
+
+
