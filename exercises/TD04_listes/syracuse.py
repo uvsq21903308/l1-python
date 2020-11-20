@@ -66,14 +66,20 @@ def tempsVolMax(n_max):
 
 def altitudeMax(n):
     """ Retounre l'altitude maximal parmis tout les trajets ayant 1 à n étapes """
-    l_alt =[]
+    l_alt = []
     for i in range(1, n + 1):
-        l_alt.append(syracuse(i))
+        alt = i
+        while i != 1:
+            if i > alt:
+                alt = i
+            if i % 2 == 0:
+                i = i // 2
+            else:
+                i = 3 * i + 1
+        l_alt.append(alt)
     alt_max = max(l_alt)
-    z = l_alt.index(alt_max) + 1
-    return l_alt, z
+    z = l_alt.index(alt_max)
+    return z
 
 
-print(altitudeMax(10000))
-
-
+# print(altitudeMax(10000))
