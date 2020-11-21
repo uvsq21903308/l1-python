@@ -292,7 +292,6 @@ def sommeTemps(temps1, temps2):
 def proportionTemps(temps, proportion):
     if type(temps) == float:
         temps, proportion = proportion, temps
-    
     temps = tempsEnSeconde(temps)
     x = temps * proportion
     x = secondeEnTemps(x)
@@ -383,7 +382,7 @@ def tempsEnDate(temps):
     ans = 1970 + temps[0] // 365
     heure = temps[1]
     minutes = temps[2]
-    seconde = temps [3]
+    seconde = temps[3]
     date.append(ans)
     date.append(mois)
     date.append(jour)
@@ -396,7 +395,7 @@ def tempsEnDate(temps):
 def afficheDate(date=-1):
     import time
     if date == -1:
-        x =time.strftime("%d %B %Y %H:%M:%S", time.gmtime())
+        x = time.strftime("%d %B %Y %H:%M:%S", time.gmtime())
         print(x)
     else:
         # Jours
@@ -444,7 +443,8 @@ afficheDate()
 
 
 def bissextile(jour):
-    """Renvoie les années qui sont bissextiles par rapport à un nombre de jour depuis l'année 2020."""
+    """Renvoie les années qui sont bissextiles par rapport à un nombre de jour
+    depuis l'année 2020."""
     fixe = jour // 365
     ans = 2020
     for i in range(fixe+1):
@@ -457,7 +457,8 @@ def bissextile(jour):
 
 
 def nombreBissextile(jour):
-    """Compte le nombre d'année bissextile depuis 1970 par rapport à un nombre de jour donné."""
+    """Compte le nombre d'année bissextile depuis 1970
+    par rapport à un nombre de jour donné."""
     fixe = jour // 365
     ans = 1970
     nbr_biss = 0
@@ -469,7 +470,8 @@ def nombreBissextile(jour):
 
 
 def tempsEnDateBissextile(temps):
-    """Renvoie une date en fontion d'un temps en prenant en compte les années bissextiles"""
+    """Renvoie une date en fontion d'un temps
+    en prenant en compte les années bissextiles"""
     nbr_biss = nombreBissextile(temps[0])
     ans = (temps[0] - nbr_biss * 366) // 365 + nbr_biss
     biss = 1970 + (temps[0] - nbr_biss * 366) // 365 + nbr_biss
@@ -639,7 +641,8 @@ def tempsEnDateBissextile(temps):
 
 
 def verifie(liste_temps):
-    """Permet de vérifier le temps de travail par rapport aux semaines et aux mois"""
+    """Permet de vérifier le temps de travail
+    par rapport aux semaines et aux mois"""
     y = 0
     z = 0
     for i in range(len(liste_temps)):
@@ -647,13 +650,16 @@ def verifie(liste_temps):
         y += x
         z += 1
         if x > 172800:
-            print("La semaine", z, "dépasse la limite d'heure acceptable pour un employer.")
+            print("La semaine", z, "dépasse la limite d'heure \
+                acceptable pour un employer.")
         else:
-            print("La semaine", z, "ne dépasse pas la limite d'heure acceptable pour un employer.")
+            print("La semaine", z, "ne dépasse pas la limite d'heure \
+                acceptable pour un employer.")
     if y > 504000:
         print("Le mois dépasse la limite d'heure acceptable pour un employer.")
     else:
-        print("Le mois ne dépasse pas la limite d'heure acceptable pour un employer.")
+        print("Le mois ne dépasse pas la limite d'heure \
+            acceptable pour un employer.")
 
 
 # liste_temps = [[1,2,39,34],[0,1,9,4],[0,29,39,51],[0,31,13,46]]
