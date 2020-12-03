@@ -6,15 +6,20 @@ WIDTH = 300
 
 def desCercle():
     """ Fonction qui dessine un cercle à une position aléatoire de Canvas"""
-    canvas.create_oval((100, 100), (300, 300), fill="blue") 
+    x = random.randint( )
+    cerle = canvas.create_oval((100, 100), (100, 100), (300, 300), (300, 300),fill="blue") 
 
 
 def desCarre():
-    
+    """ Fonction qui dessine un carre à une position aléatoire de Canvas"""
+    canvas.create_rectangle((100, 100), (100, 100), fill="red")
     return
 
 
 def desCroix():
+    """ Fonction qui dessine une croix à une position aléatoire de Canvas"""
+    canvas.create_line((50, 50, 50, 50), fill="yellow")
+    canvas.create_line((30, 50, 30, 50), fill="yellow")
     return
 
 
@@ -31,7 +36,6 @@ choix_couleur.grid(column=1, row=0)
 
 # Boutton former un cercle:
 cercle = tk.Button(racine, text="Cercle", padx=20, bg="Royalblue2", font=("30"), command=desCercle)
-canvas.create_oval((50, 50), (150, 150), fill="blue") 
 cercle.grid(column=0, row=1)
 
 # Boutton former un carre:
