@@ -1,50 +1,68 @@
 import tkinter as tk
 import random
 
-HEIGHT = 300
-WIDTH = 300
+# Affectation variable.
+HEIGHT = 800
+WIDTH = 800
+couleur = ["blue"]
 
+# Affectation fonction.
 def desCercle():
     """ Fonction qui dessine un cercle à une position aléatoire de Canvas"""
-    x = random.randint( )
-    cerle = canvas.create_oval((100, 100), (100, 100), (300, 300), (300, 300),fill="blue") 
+    x = random.randint(50, (WIDTH - 50))
+    y = random.randint(50, (HEIGHT - 50))
+    canvas.create_oval((x - 50), (y - 50), (x + 50), (y + 50), fill=couleur[0])
+    return
 
 
 def desCarre():
     """ Fonction qui dessine un carre à une position aléatoire de Canvas"""
-    canvas.create_rectangle((100, 100), (100, 100), fill="red")
+    x = random.randint(50, (WIDTH - 50))
+    y = random.randint(50, (HEIGHT - 50))
+    canvas.create_rectangle((x - 50), (y - 50), (x + 50), (y + 50), fill=couleur[0])
     return
 
 
 def desCroix():
     """ Fonction qui dessine une croix à une position aléatoire de Canvas"""
-    canvas.create_line((50, 50, 50, 50), fill="yellow")
-    canvas.create_line((30, 50, 30, 50), fill="yellow")
+    x = random.randint(50, (WIDTH - 50))
+    y = random.randint(50, (HEIGHT - 50))
+    canvas.create_line((x - 50), (y - 50), (x + 50), (y + 50), fill=couleur[0])
+    canvas.create_line((x - 50), (y + 50), (x + 50), (y - 50), fill=couleur[0])
     return
 
 
+def demCouleur():
+    """Fonction qui demande à l'utilisateur quel couleur soit-il utiliser pour son dessin"""
+    couleur.clear()
+    couleur.append(input("Rentrer la couleur qui vous convient."))
+    return  
+
+
+
+# Affectation racine.
 racine = tk.Tk()
 racine.title("Mon dessin")
 
 #Création fenêtre canvas:
-canvas = tk.Canvas(racine, bg="black", bd=302, relief="flat", height=HEIGHT, width=WIDTH)
+canvas = tk.Canvas(racine, bg="black", height=HEIGHT, width=WIDTH)
 canvas.grid(column=1, row=1, rowspan=3)
 
 # Boutton choisir couleur:
-choix_couleur = tk.Button(racine, text="Choisir une couleur", bg="tomato3", padx=10, pady=20, font=("30"))
+choix_couleur = tk.Button(racine, text="Choisir une couleur", bg="tomato3", padx=10, pady=20, font=("30"), command=demCouleur)
 choix_couleur.grid(column=1, row=0)
 
 # Boutton former un cercle:
-cercle = tk.Button(racine, text="Cercle", padx=20, bg="Royalblue2", font=("30"), command=desCercle)
-cercle.grid(column=0, row=1)
+but_cercle = tk.Button(racine, text="Cercle", padx=20, bg="Royalblue2", font=("30"), command=desCercle)
+but_cercle.grid(column=0, row=1)
 
 # Boutton former un carre:
-carre = tk.Button(racine, text="Carré", padx=20, bg="orange", font=("30"), command=desCarre)
-carre.grid(column=0, row=2)
+but_carre = tk.Button(racine, text="Carré", padx=20, bg="orange", font=("30"), command=desCarre)
+but_carre.grid(column=0, row=2)
 
 # Boutton former un croix:
-croix = tk.Button(racine, text="Croix", padx=20, bg="gold", font=("30"), command=desCroix)
-croix.grid(column=0, row=3)
+but_croix = tk.Button(racine, text="Croix", padx=20, bg="gold", font=("30"), command=desCroix)
+but_croix.grid(column=0, row=3)
 
 # Boucle Tkinter.
 racine.mainloop()
