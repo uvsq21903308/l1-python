@@ -1,11 +1,42 @@
 import tkinter as tk
 
 def pixelclic(event):
-    
+    mid = False
+    dif = False
+    midu = False
+    difu = False
+    if not pos:
+        pos.append(event.x)
+        pos.append(event.y)
+    elif event.x > 250 and pos[0] > 250:
+        mid = True
+    elif event.x < 250 and pos[0] < 250:
+        midu = True
+    elif event.x > 250 and pos[0] < 250:
+        dif = True
+    elif event.x < 250 and pos[0] > 250:
+        difu = True
+    elif mid and pos:
+        canvas.create_line(pos[0], pos[1], event.x, event.y, fill='blue')
+        pos.clear()
+    elif midu and pos:
+        canvas.create_line(pos[0], pos[1], event.x, event.y, fill='blue')
+        pos.clear()
+    elif dif and pos:
+        canvas.create_line(pos[0], pos[1], event.x, event.y, fill='red')
+        pos.clear()
+    elif difu and pos:
+        canvas.create_line( event.x, event.y, pos[0], pos[1], fill='red')
+        pos.clear()
+    if event.x != pos[0] or event.y != pos[1] and pos:
+        pos.clear()
+        pos.append(event.x)
+        pos.append(event.y)
 
     
 HEIGHT, WIDTH = 500, 500
 x = 250
+pos = []
 racine = tk.Tk()
 
 canvas = tk.Canvas(racine, bg="black", height=HEIGHT, width=WIDTH)
