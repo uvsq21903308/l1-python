@@ -2,22 +2,35 @@ import tkinter as tk
 
 
 def modifCouleur(event):
-    if cpt[0] == 1:
-        canvas.itemconfigure(rectangle, fill="blue")
-        cpt.clear()
-        cpt.append(0)
+    """Fonction qui permet de modifier là couleur du carré seulement si le curseur est sur celui si"""
+    pos = [event.x, event.y]
+    if (HEIGHT//2-50) < pos[0] < (HEIGHT//2+50) and (WIDTH//2-50) < pos[1] < (WIDTH//2+50) and stop[0] == 0:
+        if cpt[0] == 1:
+            canvas.itemconfigure(rectangle, fill="blue")
+            cpt.clear()
+            cpt.append(0)
+        else:
+            canvas.itemconfigure(rectangle, fill="red")
+            cpt.clear()
+            cpt.append(1)
     else:
         canvas.itemconfigure(rectangle, fill="red")
-        cpt.clear()
-        cpt.append(1)
+        stop.clear()
+        stop.append(1)
     return
 
 
 def recommencer():
+    """Fonction qui permet de réintilliser là couleur de rectangle et de pouvoir de nouveau changer sa couleur """
     canvas.itemconfigure(rectangle, fill="red")
+    stop.clear()
+    stop.append(0)
     return
 
+
 HEIGHT, WIDTH = 500, 500
+pos = []
+stop = [0]
 cpt = [0]
 racine = tk.Tk()
 
