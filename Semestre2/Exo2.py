@@ -10,23 +10,29 @@ def pause():
         switch.append(0)
     elif switch[0] == 0:
         b_pause.config(text="Pause")
+        stop.clear()
+        stop.append(0)
         switch.clear()
         switch.append(1)
     return
 
 
 def dessinClic(event):
-    if verif[0] == 1 and stop[0] == 0:
+    if stop[0] == 0 and verif[0] == 1:
         if not pos:
             pos.append(event.x)
             pos.append(event.y)
         elif cpt[0] == 1:
-            canvas.create_line(pos[0], pos[1], event.x, event.y, fill='blue')
+            canvas.create_line(
+                pos[0], pos[1], event.x, event.y,
+                fill='blue')
             pos.clear()
             cpt.clear()
             cpt.append(0)
         elif cpt[0] != 1:
-            canvas.create_line(pos[0], pos[1], event.x, event.y, fill='red')
+            canvas.create_line(
+                pos[0], pos[1], event.x, event.y,
+                fill='red')
             pos.clear()
             cpt.clear()
             cpt.append(1)
@@ -51,6 +57,7 @@ canvas = tk.Canvas(racine, bg="white", height=HEIGHT, width=WIDTH)
 b_pause = tk.Button(racine, text="Pause", command=pause)
 b_pause.grid(column=0, row=1)
 canvas.grid(column=0, row=0)
+
 canvas.bind("<Button-1>", dessinClic)
 
 racine.mainloop()
