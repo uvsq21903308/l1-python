@@ -1,10 +1,14 @@
 import tkinter as tk
 
+HEIGHT, WIDTH = 500, 500
+stop = [0]
+cpt = [0]
+racine = tk.Tk()
+
 
 def modifCouleur(event):
     """Fonction qui permet de modifier là couleur du carré seulement si le curseur est sur celui si"""
-    pos = [event.x, event.y]
-    if (HEIGHT//2-50) < pos[0] < (HEIGHT//2+50) and (WIDTH//2-50) < pos[1] < (WIDTH//2+50) and stop[0] == 0:
+    if (HEIGHT//2-50) < event.x < (HEIGHT//2+50) and (WIDTH//2-50) < event.y < (WIDTH//2+50) and stop[0] == 0:
         if cpt[0] == 1:
             canvas.itemconfigure(rectangle, fill="blue")
             cpt.clear()
@@ -14,7 +18,6 @@ def modifCouleur(event):
             cpt.clear()
             cpt.append(1)
     else:
-        canvas.itemconfigure(rectangle, fill="red")
         stop.clear()
         stop.append(1)
     return
@@ -27,12 +30,6 @@ def recommencer():
     stop.append(0)
     return
 
-
-HEIGHT, WIDTH = 500, 500
-pos = []
-stop = [0]
-cpt = [0]
-racine = tk.Tk()
 
 canvas = tk.Canvas(racine, bg="black", height=HEIGHT, width=WIDTH)
 b_recommencer = tk.Button(racine, text="Recommencer", command=recommencer)
