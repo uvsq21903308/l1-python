@@ -1,19 +1,22 @@
 import tkinter as tk
 
+HEIGHT, WIDTH = 500, 500
+cpt = [1]
+pos = []
+verif = [1]
+stop = [0]
+
 
 def pause():
-    if switch[0] == 1:
+    """Fonction qui permet de mettre en pause le programme"""
+    if stop[0] == 0:
         b_pause.config(text="Restart")
         stop.clear()
         stop.append(1)
-        switch.clear()
-        switch.append(0)
-    elif switch[0] == 0:
+    elif stop[0] == 1:
         b_pause.config(text="Pause")
         stop.clear()
         stop.append(0)
-        switch.clear()
-        switch.append(1)
     return
 
 
@@ -45,12 +48,7 @@ def dessinClic(event):
     return
 
 
-HEIGHT, WIDTH = 500, 500
-cpt = [1]
-pos = []
-verif = [1]
-stop = [0]
-switch = [0]
+
 racine = tk.Tk()
 
 canvas = tk.Canvas(racine, bg="white", height=HEIGHT, width=WIDTH)
